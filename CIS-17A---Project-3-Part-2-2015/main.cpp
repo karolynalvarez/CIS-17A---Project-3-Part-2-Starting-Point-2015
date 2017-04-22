@@ -27,8 +27,8 @@ int main()
 			cout << endl << "Now in folder " << newcurrent->getName() << "!";
 			break;
 		}
+		case 4: AddFolderMenu(currentFolder); break; 
 		case 5: Search(currentFolder); break;
-		case 4: AddFolderMenu(currentFolder); break;
 		case 6: {
 			if (parentFolder != nullptr) {
 				currentFolder = parentFolder;
@@ -85,12 +85,14 @@ void AddFileMenu(shared_ptr<Folder> currentFolder)
 void Search(shared_ptr<Folder> currentFolder)
 {
 	system("cls");
-	cout << "Enter new folder name: ";
+	cout << "Enter folder name: ";
 	string name;
 	cin >> name;
 	cin.ignore();
 
-	currentFolder->FindFile(name);
+	auto s = currentFolder->FindFile(name);
+	cout << "Folder found: " << s->getName() << endl;
+	system("pause");
 }
 
 
